@@ -70,6 +70,9 @@
   <script  src="/zdm.github.io/js/utils.js" ></script>
   <script  src="/zdm.github.io/js/color-schema.js" ></script>
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
 
 
   
@@ -77,12 +80,20 @@
 
 
 <body>
-  
+
 
   <header>
-    
+   </div> 
 
 <div class="header-inner" style="height: 100vh;">
+  <script>
+	$(".header-inner").ripples({
+			resolution: 1024,
+			dropRadius: 10,
+			perturbance: 0.02,
+		});
+				
+	</script>
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/zdm.github.io/">
@@ -191,7 +202,20 @@
             <span id="subtitle" data-typed-text="TesTx0 的个人博客"></span>
           
         </div>
+    <div id="apiResult"></div>
 
+    <script>
+        // 使用 XMLHttpRequest 发起 GET 请求
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://api.pearktrue.cn/api/hitokoto/", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // 将返回的文本内容显示在页面上
+                document.getElementById("apiResult").textContent = xhr.responseText;
+            }
+        };
+        xhr.send();
+    </script>
         
       </div>
 
@@ -252,11 +276,12 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/zdm.github.io/tags/test-test1/">#test test1</a>
+              <a href="/zdm.github.io/tags/test/">#test</a>
             
           </div>
         
       </div>
+	  	</div>
     </article>
   </div>
 
@@ -308,7 +333,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://github.com/TesTx0/zdm.github.io" target="_blank" rel="nofollow noopener"><span>TesTx0</span></a> 
+       <a href="https://github.com/TesTx0/zdm.github.io" target="_blank" rel="nofollow noopener"><span>TesTx0</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
   
@@ -379,5 +404,8 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+
+  
+  
 </body>
 </html>
